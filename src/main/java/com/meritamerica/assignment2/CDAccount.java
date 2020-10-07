@@ -2,7 +2,7 @@ package com.meritamerica.assignment2;
 
 import java.util.Date;
 
-public class CDAccount {
+public class CDAccount extends BankAccount {
 
 	private double balance;
 	private double interestRate;
@@ -12,7 +12,7 @@ public class CDAccount {
 	private double futureValue;
 	
 	CDAccount(CDOffering offering, double balance){
-		
+		super(0,0);
 	}
 	public double getBalance() {
 		return this.balance;

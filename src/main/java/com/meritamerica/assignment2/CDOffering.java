@@ -3,7 +3,8 @@ package com.meritamerica.assignment2;
 public class CDOffering {
 
 	private static  int term ;
-	private static int interestRate;
+	private static double interestRate;
+	
 	CDOffering(){
 		
 	}
