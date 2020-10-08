@@ -1,15 +1,32 @@
 package com.meritamerica.assignment2;
 
+<<<<<<< HEAD
 public class SavingsAccount extends BankAccount{
 	
+=======
+
+
+public class SavingsAccount extends BankAccount{
+	
+	
+	final static double INTEREST_RATE = 1.0/100;
+
+>>>>>>> a27027998bf712dc0f54a8c9fff7a87f4a41f521
 
 	final static double INTEREST_RATE = 1.0/100;
 	
+<<<<<<< HEAD
 	
 	SavingsAccount(double openingBalance) {
 		super(openingBalance,INTEREST_RATE);
 	}
 
+=======
+	 SavingsAccount(double openingBalance) {
+		super(openingBalance,INTEREST_RATE);
+	
+}
+>>>>>>> a27027998bf712dc0f54a8c9fff7a87f4a41f521
 }
 
 /*

@@ -53,6 +53,13 @@ public class BankAccount {
 	public double futureValue(int years) {
 		return this.futureValue;
 	}
+<<<<<<< HEAD
 	
 	
 }
+=======
+	public String toString() {
+		return "";
+	}
+	}
+>>>>>>> a27027998bf712dc0f54a8c9fff7a87f4a41f521

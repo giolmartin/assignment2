@@ -9,22 +9,41 @@ public class CDAccount extends BankAccount {
 	private Date date;
 	private double futureValue;
 	private CDOffering offering;
+<<<<<<< HEAD
 	
 	
 	CDAccount(CDOffering offering, double balance){
 		super(balance,offering.getInterestRate());
 		this.offering = offering;
 		this.balance = balance;
+=======
+	
+	CDAccount(CDOffering offering, double balance){
+		super(balance, offering.getInterestRate());
+	this.offering = offering;
+	this.balance = balance;
+>>>>>>> a27027998bf712dc0f54a8c9fff7a87f4a41f521
 	}
 	
 	public double getBalance() {
+		
 		return this.balance;
+		
 	}
 	public double getInterestRate() {
+<<<<<<< HEAD
 		return this.offering.getInterestRate();
 	}
 	public int getTerm() {
 		return this.offering.getTerm();
+=======
+	
+		return offering.getInterestRate();
+	}
+	public int getTerm() {
+		
+		return offering.getTerm();
+>>>>>>> a27027998bf712dc0f54a8c9fff7a87f4a41f521
 	}
 	
 	public Date getStartDate() {
@@ -34,6 +53,6 @@ public class CDAccount extends BankAccount {
 		return super.getAccountNumber();
 	}
 	public double futureValue() {
-		return this.futureValue;
+		return super.futureValue(getTerm());
 	}
 }

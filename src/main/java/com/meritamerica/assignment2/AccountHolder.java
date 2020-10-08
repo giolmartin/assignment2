@@ -109,12 +109,19 @@ public class AccountHolder {
 	/** -----------------------------------------------SAVINGS ACCOUNT------------------------------------------------------*/
 
 	public SavingsAccount addSavingsAccount(double openingBalance) {
-		return null;
+		
+		this .clientSavingsAccount = new SavingsAccount(openingBalance);
+		return this.clientSavingsAccount;
 	}
-	public SavingsAccount addSavingsAccount(CheckingAccount checkingAccount) {
+	public SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
+		this .amountSavingsAccounts = new SavingsAccount[0];
 		return null;
+		
 	}
 	public SavingsAccount[] getSavingsAccounts() {
+		for (int i =0 ; i < this .amountSavingsAccounts.length; i++) {
+			
+		}
 		return this.amountSavingsAccounts;
 	}
 	public int getNumberOfSavingsAccounts() {
@@ -122,6 +129,7 @@ public class AccountHolder {
 		return savingsAccountAmount;
 	}
 	public double getSavingsBalance() {
+
 		return 0;
 	}
 	
