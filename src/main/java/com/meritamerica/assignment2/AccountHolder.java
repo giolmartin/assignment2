@@ -33,8 +33,6 @@ public class AccountHolder {
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.ssn = ssn;
-		this.clientCheckingAccount = new CheckingAccount(this.checkingAccountOpeningBalance);
-		this.clientSavingsAccount = new SavingsAccount(this.savingsAccountOpeningBalance);
 		this.cdOffering = new CDOffering(0,0);
 		this.cdAccount = new CDAccount(this.cdOffering,0);
 		
@@ -111,12 +109,19 @@ public class AccountHolder {
 	/** -----------------------------------------------SAVINGS ACCOUNT------------------------------------------------------*/
 
 	public SavingsAccount addSavingsAccount(double openingBalance) {
-		return null;
+		
+		this .clientSavingsAccount = new SavingsAccount(openingBalance);
+		return this.clientSavingsAccount;
 	}
-	public SavingsAccount addSavingsAccount(CheckingAccount checkingAccount) {
+	public SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
+		this .amountSavingsAccounts = new SavingsAccount[0];
 		return null;
+		
 	}
 	public SavingsAccount[] getSavingsAccounts() {
+		for (int i =0 ; i < this .amountSavingsAccounts.length; i++) {
+			
+		}
 		return this.amountSavingsAccounts;
 	}
 	public int getNumberOfSavingsAccounts() {
@@ -124,6 +129,7 @@ public class AccountHolder {
 		return savingsAccountAmount;
 	}
 	public double getSavingsBalance() {
+
 		return 0;
 	}
 	
