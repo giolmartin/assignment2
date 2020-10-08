@@ -2,7 +2,7 @@ package com.meritamerica.assignment2;
 
 public class BankAccount {
 	
-	 double balance;
+	double balance;
 	static double interestRate;
 	 long accountNumber;
 	 double futureValue;
@@ -42,7 +42,7 @@ public class BankAccount {
 		
 	}
 	public boolean deposit(double amount) {
-		this.balance = this.client.getCombinedBalance();
+		this.balance = this.client.getCombinedBalance() ;
 		if((this.balance + amount) <= 250000) {
 			this.balance = this.balance + amount;
 			return true;
@@ -53,4 +53,6 @@ public class BankAccount {
 	public double futureValue(int years) {
 		return this.futureValue;
 	}
+	
+	
 }

@@ -1,18 +1,15 @@
 package com.meritamerica.assignment2;
 
-import java.math.*;
-import java.text.DecimalFormat;
-
 public class SavingsAccount extends BankAccount{
 	
-	private double balance;
-	final static double INTEREST_RATE = 1.0/100;
-	private double futureValue ;
 
+	final static double INTEREST_RATE = 1.0/100;
 	
-	public SavingsAccount(double openingBalance) {
+	
+	SavingsAccount(double openingBalance) {
 		super(openingBalance,INTEREST_RATE);
 	}
+
 }
 
 /*
@@ -60,4 +57,3 @@ public class SavingsAccount extends BankAccount{
 		return savingsAccount;
 	}
  */
-*/

@@ -6,9 +6,7 @@ public class CheckingAccount extends BankAccount{
 
 	CheckingAccount(double openingBalance) {
 		super(openingBalance,INTEREST_RATE);
-	}
-	
-	
+	}	
 }
 
 /* 

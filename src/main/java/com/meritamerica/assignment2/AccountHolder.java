@@ -9,12 +9,11 @@ public class AccountHolder {
 	private String middleName = "";
 	private String lastName = "";
 	private String ssn = "";
-	private double checkingAccountOpeningBalance;
-	private double savingsAccountOpeningBalance;
-	private CheckingAccount clientCheckingAccount = new CheckingAccount(0);
+	
+	private CheckingAccount clientCheckingAccount;
 	private CheckingAccount[] amountCheckingAccounts;
 	private SavingsAccount[] amountSavingsAccounts;
-	private SavingsAccount clientSavingsAccount = new SavingsAccount(0);
+	private SavingsAccount clientSavingsAccount;
 	private int checkingAccountAmount = 0;
 	private int savingsAccountAmount = 0;
 	private int cdAccountsAmount = 0;
@@ -33,10 +32,9 @@ public class AccountHolder {
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.ssn = ssn;
-		this.clientCheckingAccount = new CheckingAccount(this.checkingAccountOpeningBalance);
-		this.clientSavingsAccount = new SavingsAccount(this.savingsAccountOpeningBalance);
 		this.cdOffering = new CDOffering(0,0);
 		this.cdAccount = new CDAccount(this.cdOffering,0);
+		
 		
 		
 	}
