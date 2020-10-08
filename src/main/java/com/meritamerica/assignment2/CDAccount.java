@@ -5,32 +5,38 @@ import java.util.Date;
 public class CDAccount extends BankAccount {
 
 	private double balance;
-	private double interestRate;
 	private int term;
 	private long accountNumber;
 	private Date date;
 	private double futureValue;
+	private CDOffering offering;
 	
 	CDAccount(CDOffering offering, double balance){
-		super(balance,0);
+		super(balance, offering.getInterestRate());
+	this.offering = offering;
+	this.balance = balance;
 	}
 	public double getBalance() {
+		
 		return this.balance;
+		
 	}
 	public double getInterestRate() {
-		return this.interestRate;
+	
+		return offering.getInterestRate();
 	}
 	public int getTerm() {
-		return this.term;
+		
+		return offering.getTerm();
 	}
 	
 	public Date getStartDate() {
 		return this.date;
 	}
 	public long getAccountNumber() {
-		return this.accountNumber;
+		return super.getAccountNumber();
 	}
 	public double futureValue() {
-		return this.futureValue;
+		return super.futureValue(getTerm());
 	}
 }
