@@ -6,21 +6,17 @@ import java.text.DecimalFormat;
 public class SavingsAccount extends BankAccount{
 	
 	private double balance;
-	private double interestRate = 0.01;
+	final static double INTEREST_RATE = 1.0/100;
 	private double futureValue ;
 
 	
 	public SavingsAccount(double openingBalance) {
-		super(0,0);
-		
-		
-		
-		deposit(openingBalance);	
-		futureValue(3);
-		toString();
+		super(openingBalance,INTEREST_RATE);
 	}
-	
-	//Getter
+}
+
+/*
+ * //Getter
 	public  double getBalance() {
 		return this.balance;
 	}
@@ -63,4 +59,5 @@ public class SavingsAccount extends BankAccount{
 								"Balance in 3 years: " + fV ;;
 		return savingsAccount;
 	}
-}
+ */
+*/

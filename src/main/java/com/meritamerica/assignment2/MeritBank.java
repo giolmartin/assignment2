@@ -24,13 +24,17 @@ public class MeritBank {
 	return cdOfferings;	
 	}
 	
-	static CDOffering getBEstCDOffering(double depositAmount) {
+	static CDOffering getBestCDOffering(double depositAmount) {
 		return bestCDOffering;
 	}
 	static CDOffering getSecondBestCDOfferings(double depositAmount) {
 		return secondBestCDOffering;
 	}
-	static void cleadCDOfferings() {
+	
+	static void clearCDOfferings() {
+		
+	}
+	static void setCDOfferings(CDOffering[] offerings) {
 		
 	}
 	static long getNextAccountNumber() {

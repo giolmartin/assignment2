@@ -12,7 +12,7 @@ public class CDAccount extends BankAccount {
 	private double futureValue;
 	
 	CDAccount(CDOffering offering, double balance){
-		super(0,0);
+		super(balance,0);
 	}
 	public double getBalance() {
 		return this.balance;

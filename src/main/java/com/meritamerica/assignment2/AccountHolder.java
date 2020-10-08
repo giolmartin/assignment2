@@ -9,10 +9,18 @@ public class AccountHolder {
 	private String middleName = "";
 	private String lastName = "";
 	private String ssn = "";
-	private double checkingAccountOpeningBalance = 0;
-	private double savingsAccountOpeningBalance = 0;
+	private double checkingAccountOpeningBalance;
+	private double savingsAccountOpeningBalance;
 	private CheckingAccount clientCheckingAccount = new CheckingAccount(0);
+	private CheckingAccount[] amountCheckingAccounts;
+	private SavingsAccount[] amountSavingsAccounts;
 	private SavingsAccount clientSavingsAccount = new SavingsAccount(0);
+	private int checkingAccountAmount = 0;
+	private int savingsAccountAmount = 0;
+	private int cdAccountsAmount = 0;
+	private CDOffering cdOffering = new CDOffering(0,0);
+	private CDAccount cdAccount = new CDAccount(cdOffering,0);
+	private CDAccount[] amountCDAccounts;
 	
 	public AccountHolder(){	
 	}
@@ -20,16 +28,17 @@ public class AccountHolder {
 	 * Variables that are entered when calling this AccountHolder constructor are stored in private instance variables().
 	 * That way they can be called from any method without having to create and pass down another copy.
 	 */
-	public AccountHolder(String firstName, String middleName, String lastName, String ssn, 
-			double checkingAccountOpeningBalance, double savingsAccountOpeningBalance) {
+	public AccountHolder(String firstName, String middleName, String lastName, String ssn) {
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.ssn = ssn;
-		this.checkingAccountOpeningBalance = checkingAccountOpeningBalance;
-		this.savingsAccountOpeningBalance = savingsAccountOpeningBalance;
 		this.clientCheckingAccount = new CheckingAccount(this.checkingAccountOpeningBalance);
 		this.clientSavingsAccount = new SavingsAccount(this.savingsAccountOpeningBalance);
+		this.cdOffering = new CDOffering(0,0);
+		this.cdAccount = new CDAccount(this.cdOffering,0);
+		
+		
 	}
 	
 	
@@ -80,16 +89,20 @@ public class AccountHolder {
 	
 	/** -----------------------------------------------CHECKING ACCOUNT------------------------------------------------------*/
 	public CheckingAccount addCheckingAccount(double openingBalance) {
-		return null;
+		this.clientCheckingAccount = new CheckingAccount(openingBalance);
+		return this.clientCheckingAccount;
 	}
 	public CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
+		
 		return null;
 	}
 	public CheckingAccount[] getCheckingAccounts() {
-		return null;
+		
+		return this.amountCheckingAccounts;
 	}
 	public int getNumberOfCheckingAccounts() {
-		return 0;
+		checkingAccountAmount = this.amountCheckingAccounts.length;
+		return checkingAccountAmount;
 	}
 	public double getCheckingBalance() {
 		return 0;
@@ -104,10 +117,11 @@ public class AccountHolder {
 		return null;
 	}
 	public SavingsAccount[] getSavingsAccounts() {
-		return null;
+		return this.amountSavingsAccounts;
 	}
 	public int getNumberOfSavingsAccounts() {
-		return 0;
+		savingsAccountAmount = this.amountSavingsAccounts.length;
+		return savingsAccountAmount;
 	}
 	public double getSavingsBalance() {
 		return 0;
@@ -116,16 +130,21 @@ public class AccountHolder {
 	/** -----------------------------------------------CD ACCOUNT------------------------------------------------------*/
 
 	public CDAccount addCDAccount(CDOffering offering, double openingBalance) {
-		return null;
+		this.cdAccount = new CDAccount(offering, openingBalance);
+		return this.cdAccount;
 	}
 	public CDAccount addCDAccount(CDAccount cdAccount) {
-		return null;
+		CDAccount newCDAccount;
+		
+		return null ;
 	}
 	public CDAccount[] getCDAccounts() {
-		return null;
+		
+		return this.amountCDAccounts;
 	}
 	public int getNumberOfCDAccounts() {
-		return 0;
+		cdAccountsAmount = this.amountCDAccounts.length;
+		return cdAccountsAmount;
 	}
 	public double getCDBalance() {
 		return 0;
@@ -134,6 +153,7 @@ public class AccountHolder {
 	
 	
 	public double getCombinedBalance() {
+		
 		return 0;
 	}
 	

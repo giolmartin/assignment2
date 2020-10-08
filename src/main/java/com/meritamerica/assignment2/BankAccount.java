@@ -2,10 +2,12 @@ package com.meritamerica.assignment2;
 
 public class BankAccount {
 	
-	private double balance;
-	private double interestRate;
-	private long accountNumber;
-	private double futureValue;
+	 double balance;
+	static double interestRate;
+	 long accountNumber;
+	 double futureValue;
+	 double accountTotal;
+	 AccountHolder client;
 	
 	BankAccount(double balance, double interestRate){
 		this.balance = balance;
@@ -30,10 +32,23 @@ public class BankAccount {
 	}
 	
 	public boolean withdraw(double amount) {
-		return true;
+		this.balance = this.client.getCombinedBalance();//create in account Balance
+		if((this.balance - amount) >= 0) {
+			this.balance = this.balance - amount;
+			return true;
+		} else
+			return false;
+		
+		
 	}
 	public boolean deposit(double amount) {
-		return true;
+		this.balance = this.client.getCombinedBalance();
+		if((this.balance + amount) <= 250000) {
+			this.balance = this.balance + amount;
+			return true;
+		} else 
+			return false;
+		
 	}
 	public double futureValue(int years) {
 		return this.futureValue;

@@ -1,21 +1,18 @@
 package com.meritamerica.assignment2;
 
-import java.math.*;
-import java.text.DecimalFormat;
-
 public class CheckingAccount extends BankAccount{
 	
-	private double balance ;	
-	private double interestRate = 0.0001;
-	private double futureValue  ; 
+	final static double INTEREST_RATE = 0.1/100;
 
 	CheckingAccount(double openingBalance) {
-		super(0,0);
-		deposit(openingBalance);	
-		futureValue(3);
+		super(openingBalance,INTEREST_RATE);
 	}
 	
-	public double getBalance() {
+	
+}
+
+/* 
+ * public double getBalance() {
 		return balance;
 	}
 	
@@ -56,5 +53,5 @@ public class CheckingAccount extends BankAccount{
 										"Interest Rate: " +this.interestRate + "\n"+ 
 										"Balance in 3 years: " + fV ;
 		return clientCheckingAccount;
-	}
-}
+	}*/
+ 
