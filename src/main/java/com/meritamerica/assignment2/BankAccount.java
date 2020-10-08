@@ -2,7 +2,7 @@ package com.meritamerica.assignment2;
 
 public class BankAccount {
 	
-	double balance;
+	double balance ;
 	static double interestRate;
 	 long accountNumber;
 	 double futureValue;
@@ -21,6 +21,7 @@ public class BankAccount {
 	}
 	
 	public long getAccountNumber() {
+		System.out.println("AccountNumber");
 		return this.accountNumber;
 	}
 	
@@ -38,28 +39,24 @@ public class BankAccount {
 			return true;
 		} else
 			return false;
-		
-		
 	}
+	
 	public boolean deposit(double amount) {
-		this.balance = this.client.getCombinedBalance() ;
+		//this.balance = this.client.getCombinedBalance() ;
 		if((this.balance + amount) <= 250000) {
 			this.balance = this.balance + amount;
 			return true;
 		} else 
-			return false;
-		
+			return false;	
 	}
+	
 	public double futureValue(int years) {
+		this.futureValue = balance * Math.pow((1+ interestRate ), years);
 		return this.futureValue;
 	}
-<<<<<<< HEAD
-	
-	
-}
-=======
+
 	public String toString() {
 		return "";
 	}
-	}
->>>>>>> a27027998bf712dc0f54a8c9fff7a87f4a41f521
+}
+

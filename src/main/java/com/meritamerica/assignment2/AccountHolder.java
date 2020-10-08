@@ -1,18 +1,17 @@
 package com.meritamerica.assignment2;
 
-
-
-
 public class AccountHolder {
 
 	private String firstName = "";
 	private String middleName = "";
 	private String lastName = "";
 	private String ssn = "";
-	
+	private double checkingBalance = 0;
 	private CheckingAccount clientCheckingAccount;
-	private CheckingAccount[] amountCheckingAccounts;
-	private SavingsAccount[] amountSavingsAccounts;
+	private CheckingAccount past;
+	private CheckingAccount actual;
+	private CheckingAccount[] amountCheckingAccounts = new CheckingAccount[1];
+	private SavingsAccount[] amountSavingsAccounts = new SavingsAccount[1];
 	private SavingsAccount clientSavingsAccount;
 	private int checkingAccountAmount = 0;
 	private int savingsAccountAmount = 0;
@@ -20,6 +19,8 @@ public class AccountHolder {
 	private CDOffering cdOffering = new CDOffering(0,0);
 	private CDAccount cdAccount = new CDAccount(cdOffering,0);
 	private CDAccount[] amountCDAccounts;
+	private  int  counterC = 0;
+	private int counterS = 0;
 	
 	public AccountHolder(){	
 	}
@@ -34,9 +35,6 @@ public class AccountHolder {
 		this.ssn = ssn;
 		this.cdOffering = new CDOffering(0,0);
 		this.cdAccount = new CDAccount(this.cdOffering,0);
-		
-		
-		
 	}
 	
 	
@@ -54,7 +52,6 @@ public class AccountHolder {
 	public String getMiddleName() {
 		return this.middleName;
 	}
-	
 	/*
 	 * returns instance variable lastName
 	 */
@@ -88,33 +85,69 @@ public class AccountHolder {
 	/** -----------------------------------------------CHECKING ACCOUNT------------------------------------------------------*/
 	public CheckingAccount addCheckingAccount(double openingBalance) {
 		this.clientCheckingAccount = new CheckingAccount(openingBalance);
+		this.clientCheckingAccount.deposit(openingBalance);
+		//System.out.println("add checking simple");
 		return this.clientCheckingAccount;
 	}
+	
 	public CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
-		
+		//System.out.println("add checking array");
+			 if(counterC == this.amountCheckingAccounts.length) {
+			
+			CheckingAccount[] newCheckingAccounts = new CheckingAccount[counterC + 1];
+			
+			for(int i = 0 ; i < counterC  ; i++) {
+				newCheckingAccounts[i] = this.amountCheckingAccounts[i];
+			} 
+		 this.amountCheckingAccounts = newCheckingAccounts;
+		}			
+			this.amountCheckingAccounts[counterC] = checkingAccount;
+			this.counterC++; 
+			//System.out.println(counterC);
+			
 		return null;
 	}
+	
 	public CheckingAccount[] getCheckingAccounts() {
 		
 		return this.amountCheckingAccounts;
 	}
+	
 	public int getNumberOfCheckingAccounts() {
-		checkingAccountAmount = this.amountCheckingAccounts.length;
-		return checkingAccountAmount;
+		return counterC;
 	}
 	public double getCheckingBalance() {
-		return 0;
+		
+		//for (int i = 0; i < this.amountCheckingAccounts.length; i++) {
+		//	checkingBalance = this.amountCheckingAccounts[i].getBalance() 
+	//								+ checkingBalance;
+	//	}
+		return this.clientCheckingAccount.getBalance();
 	}
 	
 	/** -----------------------------------------------SAVINGS ACCOUNT------------------------------------------------------*/
 
 	public SavingsAccount addSavingsAccount(double openingBalance) {
+		this.clientSavingsAccount = new SavingsAccount(openingBalance);
 		
-		this .clientSavingsAccount = new SavingsAccount(openingBalance);
+		//System.out.println("AddSAvingsSimple");
 		return this.clientSavingsAccount;
 	}
 	public SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
-		this .amountSavingsAccounts = new SavingsAccount[0];
+		//System.out.println("add savings array");
+		
+		if(counterS == this.amountSavingsAccounts.length) {
+			
+			SavingsAccount[] newSavingsAccount = new SavingsAccount[counterS + 1];
+			
+			for(int i = 0; i < counterS ; i++) {
+				newSavingsAccount[i] = this.amountSavingsAccounts[i];
+			}
+			this.amountSavingsAccounts = newSavingsAccount;
+		}
+		this.amountSavingsAccounts[counterS] = savingsAccount;
+		this.counterS++;
+		//System.out.println(counterS);
 		return null;
 		
 	}
@@ -129,8 +162,12 @@ public class AccountHolder {
 		return savingsAccountAmount;
 	}
 	public double getSavingsBalance() {
-
-		return 0;
+		//double savingsBalance = 0;
+		//for (int i = 0; i < this.amountSavingsAccounts.length; i++) {
+		//	savingsBalance = this.amountSavingsAccounts[i].getBalance() 
+		//							+ savingsBalance;
+		//}
+		return this.amountSavingsAccounts[counterS].getBalance();
 	}
 	
 	/** -----------------------------------------------CD ACCOUNT------------------------------------------------------*/
@@ -141,22 +178,21 @@ public class AccountHolder {
 	}
 	public CDAccount addCDAccount(CDAccount cdAccount) {
 		CDAccount newCDAccount;
-		
 		return null ;
 	}
+	
 	public CDAccount[] getCDAccounts() {
-		
 		return this.amountCDAccounts;
 	}
+	
 	public int getNumberOfCDAccounts() {
 		cdAccountsAmount = this.amountCDAccounts.length;
 		return cdAccountsAmount;
 	}
+	
 	public double getCDBalance() {
 		return 0;
 	}
-	
-	
 	
 	public double getCombinedBalance() {
 		
