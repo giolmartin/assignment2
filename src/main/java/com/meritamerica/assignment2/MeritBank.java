@@ -5,10 +5,9 @@ import java.util.Random;
 
 public class MeritBank {
 	
-	private final static double MAXIMUN_BALANCE_AMOUNT = 250000;
 	private static AccountHolder[] accounts = new AccountHolder[0];
-	private static AccountHolder accountH;
 	private static CDOffering[] cdOfferings;
+	
 	private static CDOffering bestCDOffering;
 	private static CDOffering secondBestCDOffering;
 	private static int counterA = 0;
@@ -16,7 +15,6 @@ public class MeritBank {
 	private static double totalBalance = 0;
 	
 	public static void addAccountHolder(AccountHolder accountHolder) {
-		accountH = accountHolder;
 		if(counterA == accounts.length) {
 			AccountHolder[] newAccounts = new AccountHolder[counterA + 1];
 			for(int i = 0; i <counterA ; i++) {

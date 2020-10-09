@@ -5,8 +5,53 @@ public class MeritAmericaBankApp {
 	public static void main(String[] args) {
 		System.out.println("Hello Merit America!");
 
+		AccountHolder accountHolder1 = new AccountHolder("Sam", "John", "Houston","633378899");
+    	
+    	accountHolder1.addCheckingAccount(1000);
+    	accountHolder1.addCheckingAccount(5000);
+    	accountHolder1.addCheckingAccount(50000);    	
+    	
+    	accountHolder1.addSavingsAccount(10000);
+    	accountHolder1.addSavingsAccount(50000);
+    	accountHolder1.addSavingsAccount(150000);
+    	
+    	accountHolder1.addCDAccount(new CDOffering(1, 1.8/100),5000);
+    	MeritBank.addAccountHolder(accountHolder1);
+    	
+    	AccountHolder accountHolder2 = new AccountHolder("Alex", "Chester" , "Chester", "123483795");
+    	accountHolder2.addCheckingAccount(20000);
+    	accountHolder2.addSavingsAccount(10000);    
+    	accountHolder2.addCheckingAccount(20000);
+    	accountHolder2.addSavingsAccount(100000); 
+    	accountHolder2.addCheckingAccount(20000);
+    	accountHolder2.addSavingsAccount(100000); 
+    	
+    	accountHolder2.addCDAccount(new CDOffering(2, 1.9/100),5000);
+    	MeritBank.addAccountHolder(accountHolder2);
+
+    	AccountHolder accountHolder3 = new AccountHolder("Shiva", "John", "Houston","633378898"); 
+    	
+    	accountHolder3.addCheckingAccount(1000);
+    	accountHolder3.addSavingsAccount(10000);    	
+    	
+    	MeritBank.addAccountHolder(accountHolder3);
+    	
+    	
+    	System.out.println(accountHolder1.toString());
+    	System.out.println(accountHolder2.toString());
+    	System.out.println(accountHolder3.toString());
+
+
+    	
+
+    	//System.out.println("Total  Checking Balance: $"+accountHolder.getCheckingBalance());
+    	//System.out.println("Total  Savings Balance: $"+accountHolder.getSavingsBalance());
 	
-AccountHolder accountHolder = new AccountHolder("Sam", "John", "Houston","633378899");
+	}
+}
+/* 
+
+		AccountHolder accountHolder = new AccountHolder("Sam", "John", "Houston","633378899");
     	
     	CheckingAccount checkingAccount1 =new CheckingAccount(1000);
     	SavingsAccount savingsAccount1 = new SavingsAccount(10000);
@@ -35,16 +80,8 @@ AccountHolder accountHolder = new AccountHolder("Sam", "John", "Houston","633378
 		
     		System.out.println(accountHolder.getNumberOfCheckingAccounts());
     		System.out.println(accountHolder.getNumberOfSavingsAccounts());
+    		
     		System.out.println(MeritBank.totalBalances());
-
-    	//System.out.println("Total  Checking Balance: $"+accountHolder.getCheckingBalance());
-    	//System.out.println("Total  Savings Balance: $"+accountHolder.getSavingsBalance());
-	
-	}
-}
-/* 
-
-
     	accountHolder2.addCheckingAccount(9999);
 		System.out.println("added :" + accountHolder2.getCheckingBalance() );
 

@@ -43,7 +43,6 @@ public class BankAccount {
 	}
 	
 	public boolean deposit(double amount) {
-		//this.balance = this.client.getCombinedBalance() ;
 		if((this.balance + amount) <= 250000) {
 			System.out.println("Deposit bank: "+ amount);
 			this.balance = this.balance + amount;

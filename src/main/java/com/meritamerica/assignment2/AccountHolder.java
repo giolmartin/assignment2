@@ -1,37 +1,55 @@
 package com.meritamerica.assignment2;
-
+/**
+ * 
+ * @author Gio & AJ 
+ * File: AccountHolder.java
+ * -------------------------------------------------------
+ * This class holds getters and setters for the following classes. 
+ * -Account Holder
+ * -CDAccount
+ * -Checking Account
+ * -Savings Account
+ *
+ */
 public class AccountHolder {
 
+	private static final double MAX_BALANCE_AMOUNT = 250000;
+	
 	private String firstName = "";
 	private String middleName = "";
 	private String lastName = "";
 	private String ssn = "";
 	
-	private double checkingBalance = 0;
-	private double savingsBalance = 0;
 	
-	private CheckingAccount clientCheckingAccount;
+	
+	
 	private CheckingAccount[] amountCheckingAccounts = new CheckingAccount[1];
+	private CheckingAccount clientCheckingAccount;
+	private double checkingBalance = 0;
 	
 	private SavingsAccount[] amountSavingsAccounts = new SavingsAccount[1];
 	private SavingsAccount clientSavingsAccount;
+	private double savingsBalance = 0;
 	
 	private CDOffering cdOffering = new CDOffering(0,0);
 	
+	private CDAccount[] amountCDAccounts = new CDAccount[0];
 	private CDAccount cdAccount = new CDAccount(cdOffering,0);
-	private CDAccount[] amountCDAccounts;
+	private double cdBalance = 0;
+	
+	private double combinedBalance = 0;
 	
 	private int counterC = 0;
 	private int counterS = 0;
+	private int counterCD = 0;
 	
-	private  double tB = 0;
-	MeritBank m = new MeritBank();
+	private  double totalB = 0;
+	
 	
 	public AccountHolder(){	
 	}
-	/*
-	 * Variables that are entered when calling this AccountHolder constructor are stored in private instance variables().
-	 * That way they can be called from any method without having to create and pass down another copy.
+	/**
+	 * AccountHolder Constructor (String, String, String, String)
 	 */
 	public AccountHolder(String firstName, String middleName, String lastName, String ssn) {
 		this.firstName = firstName;
@@ -70,39 +88,39 @@ public class AccountHolder {
 	
 	/** -----------------------------------------------SETTERS------------------------------------------------------*/
 
-	
+	/** Sets first name */
 	public void setFirstName(String firstName) {
 		this.firstName= firstName; 
 	}
+	
+	/** Sets middle name */
 	public void setMiddleName(String middleName) {
 		 this.middleName = middleName;
-		
 	}
+	
+	/** Sets last name */
 	public void setLastName(String lastName) {
 		 this.lastName = lastName;
 	}
+	
+	/** Sets SSN name */
 	public void setSSN(String ssn) {
 		this.ssn = ssn;
 	}
 	
 	/** -----------------------------------------------CHECKING ACCOUNT------------------------------------------------------*/
+	/** Creates a checking account and calls addCheckingAccount(CheckingAccount) method */
 	public CheckingAccount addCheckingAccount(double openingBalance) {
 		this.clientCheckingAccount = new CheckingAccount(openingBalance);
 		addCheckingAccount(this.clientCheckingAccount);
 		return this.clientCheckingAccount;
 	}
 	
+	/** Receives a checkingAccount and stores it in an CheckingAccount[] */
 	public CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
+		totalB  = totalB + 	checkingAccount.getBalance() ;	
 		
-		System.out.println("Im in adding checking : $" + checkingAccount.getBalance());
-
-		tB  = tB+ 	checkingAccount.getBalance() ;
-		System.out.println("tB checking: " + tB);
-		if (tB > 250000) {
-			System.out.println("Over 250K men!");
-		}
-		
-		if (tB < 250000) {
+		if (totalB < 250000) {
 		if(counterC == this.amountCheckingAccounts.length) {
 			 CheckingAccount[] newCheckingAccounts = new CheckingAccount[counterC + 1];
 			 for(int i = 0 ; i < counterC  ; i++) {
@@ -113,16 +131,22 @@ public class AccountHolder {
 			this.amountCheckingAccounts[counterC] = checkingAccount;
 			this.counterC++; 
 	return null;
-		} else return null;
+		} else 
+			return null;
 	}
 	
+	/** Returns CheckingAccount[] */
 	public CheckingAccount[] getCheckingAccounts() {
 		return this.amountCheckingAccounts;
 	}
 	
+	/** Returns the total amount of checkingAccounts*/
 	public int getNumberOfCheckingAccounts() {
 		return this.amountCheckingAccounts.length;
 	}
+	
+	/** Returns the collective Balance between all checkingAccounts
+	 *  that are stored in a CheckingAccount[] */
 	public double getCheckingBalance() {
 		double checkingBalance = 0;
 		for (int i = 0; i < this.amountCheckingAccounts.length  ; i++) {
@@ -135,30 +159,19 @@ public class AccountHolder {
 	}
 	
 	/** -----------------------------------------------SAVINGS ACCOUNT------------------------------------------------------*/
-
+	/** Creates a savings account and calls addSavingsAccount(SavingsAccount) method */
 	public SavingsAccount addSavingsAccount(double openingBalance) {
-		
 		this.clientSavingsAccount = new SavingsAccount(openingBalance);
-		
 		addSavingsAccount(this.clientSavingsAccount);
 			return this.clientSavingsAccount;
-		
 	}
-	
+	/** Receives a savingsAccount and stores it into a SavingsAccount[]*/
 	public SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
-		System.out.println("Im in adding savings : $" + savingsAccount.getBalance());
 		
-		tB = 	tB + savingsAccount.getBalance() ;
+		totalB = 	totalB + savingsAccount.getBalance() ;
 		
-		if (tB > 250000) {
-			System.out.println("Over 250K men!");
-		}
-
-		System.out.println("TB savings: $" + tB);
 		
-		if(tB < 250000) {
-		
-
+		if(totalB < MAX_BALANCE_AMOUNT) {
 		if(counterS == this.amountSavingsAccounts.length) {
 			SavingsAccount[] newSavingsAccount = new SavingsAccount[counterS + 1];
 			for(int i = 0; i < counterS ; i++) {
@@ -169,17 +182,24 @@ public class AccountHolder {
 		this.amountSavingsAccounts[counterS] = savingsAccount;
 		this.counterS++;
 		return null;
-		} else return null;
 		
-		
+		} else {
+			
+			return null;}	
 	}
+	
+	/** Returns a SavingsAccount[]*/
 	public SavingsAccount[] getSavingsAccounts() {
 		return this.amountSavingsAccounts;
 	}
+	
+	/** Returns the total amount of savingsAccounts*/
 	public int getNumberOfSavingsAccounts() {
 		return this.amountSavingsAccounts.length;
 	}
 	
+	/** Returns the collective Balance between all savingsAccounts
+	 *  that are stored in a SavingsAccount[] */
 	public double getSavingsBalance() {
 		double savingsBalance = 0;
 		for (int i = 0; i < this.amountSavingsAccounts.length; i++) {
@@ -193,37 +213,62 @@ public class AccountHolder {
 	
 	/** -----------------------------------------------CD ACCOUNT------------------------------------------------------*/
 
+	/** Creates a CD Account*/
 	public CDAccount addCDAccount(CDOffering offering, double openingBalance) {
 		this.cdAccount = new CDAccount(offering, openingBalance);
+		addCDAccount(this.cdAccount);
 		return this.cdAccount;
 	}
-	public CDAccount addCDAccount(CDAccount cdAccount) {
-		CDAccount newCDAccount;
-		return null ;
-	}
 	
+	/** Adds cdAccount into a CDAccounts[]*/
+	public CDAccount addCDAccount(CDAccount cdAccount) {
+		
+		if(counterCD == this.amountCDAccounts.length) {
+			CDAccount[] newCDAccount = new CDAccount[counterCD + 1];
+		
+			for(int i = 0; i < counterCD; i++) {
+				newCDAccount[i] = this.amountCDAccounts[i];
+			}
+		
+		this.amountCDAccounts = newCDAccount;
+		this.amountCDAccounts[counterCD] = cdAccount;
+		counterCD ++;
+		}
+	return null ;
+	}
+	/** Returns a CDAccounts[]*/
 	public CDAccount[] getCDAccounts() {
 		return this.amountCDAccounts;
 	}
-	
+	/** Returns the amount of CDAcounts*/
 	public int getNumberOfCDAccounts() {
-		
 		return this.amountCDAccounts.length;
 	}
-	
+	/** Returns the combined balance of all CD Accounts*/
 	public double getCDBalance() {
-		return 0;
+		double cdB = 0;
+		for (int i = 0; i < this.amountCDAccounts.length ; i++) {
+			cdB = this.amountCDAccounts[i].getBalance()
+								+ cdB ;
+		}
+		this.cdBalance = cdB;
+		return this.cdBalance;
 	}
-	
+	/**------------------------------------------------------------------------------------------------------------------------ */
+	/** Adds Savings Balance, Checking Balance and CD Balance*/
 	public double getCombinedBalance() {
-		
-		return 0;
+		this.combinedBalance	= getCheckingBalance()+ getSavingsBalance()+ getCDBalance();
+		return combinedBalance;
 	}
 	
 
 	public String toString() {
 		String client = "Name: " + this.firstName + " " + this.middleName + " " + this.lastName + "\n" + 
-						"SSN: " + this.ssn + "\n" ;
+						"SSN: " + this.ssn + "\n" +
+						"Checkings Balance: $" + getCheckingBalance() + "\n" +
+						"Savings Balance: $" + getSavingsBalance() + "\n" +
+						"CD Accounts Balance: $" + getCDBalance() + "\n" +
+						"Total Balance: $" + getCombinedBalance();
 		return client;
 	}
 	
