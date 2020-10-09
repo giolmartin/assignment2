@@ -7,12 +7,12 @@ public class BankAccount {
 	 long accountNumber;
 	 double futureValue;
 	 double accountTotal;
+	private MeritBank m = new MeritBank();
 	
 	BankAccount(double balance, double interestRate){
-		System.out.println("BankAccount Constr");
 		this.balance = balance;
 		this.interestRate = interestRate;
-		
+	
 	}
 	
 	BankAccount(long accountNumber, double balance, double interestRate){
@@ -27,7 +27,6 @@ public class BankAccount {
 	}
 	
 	public double getBalance() {
-		System.out.println("Balance Bank " + this.balance);
 		return this.balance;
 	}
 	public double getInterestRate() {

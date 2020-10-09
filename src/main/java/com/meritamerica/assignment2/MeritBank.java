@@ -11,14 +11,12 @@ public class MeritBank {
 	private static CDOffering[] cdOfferings = new CDOffering[5];
 	private static CDOffering bestCDOffering;
 	private static CDOffering secondBestCDOffering;
-	private static double depositAmount;
 	private static int counterA = 0;
 	private static int counterCD = 0;
 	private static double totalBalance = 0;
 	
 	public static void addAccountHolder(AccountHolder accountHolder) {
 		accountH = accountHolder;
-		if (totalBalances() < MAXIMUN_BALANCE_AMOUNT) {
 		if(counterA == accounts.length) {
 			AccountHolder[] newAccounts = new AccountHolder[counterA + 1];
 			for(int i = 0; i <counterA ; i++) {
@@ -27,13 +25,7 @@ public class MeritBank {
 			accounts = newAccounts;
 		}
 			accounts[counterA] = accountHolder;
-			counterA++;
-			}
-		else {
-			System.out.println("More than the max amount: " + MAXIMUN_BALANCE_AMOUNT);
-			return;
-		}
-			
+			counterA ++;
 	}
 	
 	public static AccountHolder[] getAccountHolders() {
@@ -52,7 +44,9 @@ public class MeritBank {
 	}
 	
 	public static void clearCDOfferings() {
-		cdOfferings = null;
+		for (int i = 0; i < 5; i++)  {
+			cdOfferings[i] = null;
+		}
 	}
 	
 	public static void setCDOfferings(CDOffering[] offerings) {
@@ -65,11 +59,11 @@ public class MeritBank {
 		return 0;
 	}
 	public static double totalBalances() {
-		totalBalance  = accountH.getCheckingBalance() 
-				+ accountH.getSavingsBalance();
-		
-		return totalBalance;
+		double tB = 0;
+		System.out.println("Method Total Balance" + tB);
+		return tB;
 	}
+	
 	public static double futureValue(double presentValue, double interestRate, int term) {
 		return 0;
 	}

@@ -6,38 +6,76 @@ public class MeritAmericaBankApp {
 		System.out.println("Hello Merit America!");
 
 	
-		AccountHolder accountHolder = new AccountHolder("Sam", "John", "Houston","633378899");
-		AccountHolder accountHolder2 = new AccountHolder("gio", "ma", "rtin","1111111111");
-		accountHolder.addCheckingAccount(1000);
-		accountHolder.addCheckingAccount(1000);
-		accountHolder.addCheckingAccount(1000);
-    	accountHolder.addSavingsAccount(10000);
-    	accountHolder.addSavingsAccount(10000);
-    	accountHolder.addSavingsAccount(10000);
-    	accountHolder2.addCheckingAccount(9999);
-    	accountHolder2.addCheckingAccount(20000);
-		accountHolder2.addCheckingAccount(1000000);
-		accountHolder2.addSavingsAccount(10000);
-		accountHolder2.addSavingsAccount(10000);
-    	MeritBank.addAccountHolder(accountHolder);
-    	MeritBank.addAccountHolder(accountHolder2);
+AccountHolder accountHolder = new AccountHolder("Sam", "John", "Houston","633378899");
     	
+    	CheckingAccount checkingAccount1 =new CheckingAccount(1000);
+    	SavingsAccount savingsAccount1 = new SavingsAccount(10000);
     	
-    	for(int i = 0; i < 2 ; i++) {
-       System.out.println( MeritBank.getAccountHolders()[i].getFirstName());    	
-       System.out.println( MeritBank.getAccountHolders()[i].getMiddleName());       
-       System.out.println(MeritBank.getAccountHolders()[i].getLastName());  
-       System.out.println( MeritBank.getAccountHolders()[i].getSSN());       
-       System.out.println( "Checking: $" + MeritBank.getAccountHolders()[i].getCheckingBalance());    
-       System.out.println( "Savings: $" + MeritBank.getAccountHolders()[i].getSavingsBalance());
+    	CheckingAccount checkingAccount2 =new CheckingAccount(5000);
+    	SavingsAccount savingsAccount2 = new SavingsAccount(50000);
     	
-    	}
+    	CheckingAccount checkingAccount3 =new CheckingAccount(50000);
+    	SavingsAccount savingsAccount3 = new SavingsAccount(130000);
+    	
+       	CheckingAccount checkingAccount4 =new CheckingAccount(5000);
+    	SavingsAccount savingsAccount4 = new SavingsAccount(50000);    	
+
+    	accountHolder.addCheckingAccount(checkingAccount1);
+    	accountHolder.addSavingsAccount(savingsAccount1);
+    	
+    	accountHolder.addCheckingAccount(checkingAccount2);
+    	accountHolder.addSavingsAccount(savingsAccount2);    	
+    	
+    	accountHolder.addCheckingAccount(checkingAccount3);
+    	accountHolder.addSavingsAccount(savingsAccount3);    	    
+    	
+    	accountHolder.addCheckingAccount(checkingAccount4);
+    	accountHolder.addSavingsAccount(savingsAccount4);   
+		
+		
+    		System.out.println(accountHolder.getNumberOfCheckingAccounts());
+    		System.out.println(accountHolder.getNumberOfSavingsAccounts());
+    		System.out.println(MeritBank.totalBalances());
+
     	//System.out.println("Total  Checking Balance: $"+accountHolder.getCheckingBalance());
     	//System.out.println("Total  Savings Balance: $"+accountHolder.getSavingsBalance());
 	
 	}
 }
-/* accountHolder.addCheckingAccount(checkingAccount2);
+/* 
+
+
+    	accountHolder2.addCheckingAccount(9999);
+		System.out.println("added :" + accountHolder2.getCheckingBalance() );
+
+    	accountHolder2.addCheckingAccount(20000);
+		System.out.println("added :" + accountHolder2.getCheckingBalance() );
+
+		accountHolder2.addCheckingAccount(1000000);
+		System.out.println("added :" + accountHolder2.getCheckingBalance() );
+	AccountHolder accountHolder2 = new AccountHolder("gio", "ma", "rtin","1111111111");
+		accountHolder.addCheckingAccount(1000);
+		
+		accountHolder.addCheckingAccount(1000);
+		
+
+		accountHolder.addCheckingAccount(1000);
+		
+
+    	accountHolder.addSavingsAccount(100000);
+		
+
+    	accountHolder.addSavingsAccount(10000);
+
+
+    	accountHolder.addSavingsAccount(50000);
+		
+		accountHolder2.addSavingsAccount(10000);
+		System.out.println("added :" + accountHolder2.getSavingsBalance() );
+
+		accountHolder2.addSavingsAccount(10000);
+		System.out.println("added :" + accountHolder2.getSavingsBalance() );
+		
     	accountHolder.addSavingsAccount(savingsAccount2);    	
     	AccountHolder accountHolder = new AccountHolder("Sam", "John", "Houston","633378899");
     	
