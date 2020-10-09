@@ -2,16 +2,17 @@ package com.meritamerica.assignment2;
 
 public class BankAccount {
 	
-	double balance ;
+	private double  balance ;
 	static double interestRate;
 	 long accountNumber;
 	 double futureValue;
 	 double accountTotal;
-	 AccountHolder client;
 	
 	BankAccount(double balance, double interestRate){
+		System.out.println("BankAccount Constr");
 		this.balance = balance;
 		this.interestRate = interestRate;
+		
 	}
 	
 	BankAccount(long accountNumber, double balance, double interestRate){
@@ -26,6 +27,7 @@ public class BankAccount {
 	}
 	
 	public double getBalance() {
+		System.out.println("Balance Bank " + this.balance);
 		return this.balance;
 	}
 	public double getInterestRate() {
@@ -33,20 +35,22 @@ public class BankAccount {
 	}
 	
 	public boolean withdraw(double amount) {
-		this.balance = this.client.getCombinedBalance();//create in account Balance
+	/*	this.balance = this.client.getCombinedBalance();//create in account Balance
 		if((this.balance - amount) >= 0) {
 			this.balance = this.balance - amount;
 			return true;
 		} else
-			return false;
+	*/		return false;
 	}
 	
 	public boolean deposit(double amount) {
 		//this.balance = this.client.getCombinedBalance() ;
 		if((this.balance + amount) <= 250000) {
+			System.out.println("Deposit bank: "+ amount);
 			this.balance = this.balance + amount;
 			return true;
 		} else 
+			System.out.println(" more than 250000");
 			return false;	
 	}
 	

@@ -1,10 +1,45 @@
 package com.meritamerica.assignment2;
 
+
 public class MeritAmericaBankApp {
 	public static void main(String[] args) {
 		System.out.println("Hello Merit America!");
 
+	
 		AccountHolder accountHolder = new AccountHolder("Sam", "John", "Houston","633378899");
+		AccountHolder accountHolder2 = new AccountHolder("gio", "ma", "rtin","1111111111");
+		accountHolder.addCheckingAccount(1000);
+		accountHolder.addCheckingAccount(1000);
+		accountHolder.addCheckingAccount(1000);
+    	accountHolder.addSavingsAccount(10000);
+    	accountHolder.addSavingsAccount(10000);
+    	accountHolder.addSavingsAccount(10000);
+    	accountHolder2.addCheckingAccount(9999);
+    	accountHolder2.addCheckingAccount(20000);
+		accountHolder2.addCheckingAccount(1000000);
+		accountHolder2.addSavingsAccount(10000);
+		accountHolder2.addSavingsAccount(10000);
+    	MeritBank.addAccountHolder(accountHolder);
+    	MeritBank.addAccountHolder(accountHolder2);
+    	
+    	
+    	for(int i = 0; i < 2 ; i++) {
+       System.out.println( MeritBank.getAccountHolders()[i].getFirstName());    	
+       System.out.println( MeritBank.getAccountHolders()[i].getMiddleName());       
+       System.out.println(MeritBank.getAccountHolders()[i].getLastName());  
+       System.out.println( MeritBank.getAccountHolders()[i].getSSN());       
+       System.out.println( "Checking: $" + MeritBank.getAccountHolders()[i].getCheckingBalance());    
+       System.out.println( "Savings: $" + MeritBank.getAccountHolders()[i].getSavingsBalance());
+    	
+    	}
+    	//System.out.println("Total  Checking Balance: $"+accountHolder.getCheckingBalance());
+    	//System.out.println("Total  Savings Balance: $"+accountHolder.getSavingsBalance());
+	
+	}
+}
+/* accountHolder.addCheckingAccount(checkingAccount2);
+    	accountHolder.addSavingsAccount(savingsAccount2);    	
+    	AccountHolder accountHolder = new AccountHolder("Sam", "John", "Houston","633378899");
     	
     	CheckingAccount checkingAccount1 =new CheckingAccount(1000);
     	SavingsAccount savingsAccount1 = new SavingsAccount(10000);
@@ -17,19 +52,23 @@ public class MeritAmericaBankApp {
     	
        	CheckingAccount checkingAccount4 =new CheckingAccount(5000);
     	SavingsAccount savingsAccount4 = new SavingsAccount(50000);    	
-
+    	
     	accountHolder.addCheckingAccount(checkingAccount1);
     	accountHolder.addSavingsAccount(savingsAccount1);
-    	
-    	CDOffering[] fromMeritBankCDOfferings = MeritBank.getCDOfferings();
-    	System.out.println("Total  Checking Balance: $"+accountHolder.getCheckingBalance());
-    	System.out.println("Total  Savings Balance: $"+accountHolder.getSavingsBalance());
-	
-	}
-}
-/* accountHolder.addCheckingAccount(checkingAccount2);
+    	accountHolder.addCheckingAccount(checkingAccount2);
     	accountHolder.addSavingsAccount(savingsAccount2);    	
+    	accountHolder.addCheckingAccount(checkingAccount3);
+    	accountHolder.addSavingsAccount(savingsAccount3);    	    
+    	accountHolder.addCheckingAccount(checkingAccount4);
+    	accountHolder.addSavingsAccount(savingsAccount4); 
     	
+    	AccountHolder accountHolder2 = new AccountHolder("Sam", "John", "Houston","633378899");
+    	
+    	accountHolder2.addCheckingAccount(checkingAccount1);
+    	accountHolder2.addSavingsAccount(savingsAccount1);
+    	
+    	accountHolder2.addCheckingAccount(checkingAccount2);
+    	accountHolder2.addSavingsAccount(savingsAccount2); 
     	accountHolder.addCheckingAccount(checkingAccount3);
     	accountHolder.addSavingsAccount(savingsAccount3);    	    
     	
@@ -49,6 +88,15 @@ public class MeritAmericaBankApp {
     	MeritBank.addAccountHolder(accountHolder);
     	MeritBank.addAccountHolder(accountHolder12);
 
+    	
+    	CDOffering[] fromMeritBankCDOfferings = MeritBank.getCDOfferings();
+    	System.out.println(fromMeritBankCDOfferings[0].getTerm());
+    	System.out.println(fromMeritBankCDOfferings[1].getTerm());
+    	System.out.println(fromMeritBankCDOfferings[2].getTerm());
+    	System.out.println(fromMeritBankCDOfferings[3].getTerm());
+    	System.out.println(fromMeritBankCDOfferings[4].getTerm());
+    	System.out.println(fromMeritBankCDOfferings[0].getInterestRate());
+    	
     	CDOffering[] CDOfferings = new CDOffering[5];
     	
     	CDOfferings[0] = new CDOffering(1,1.8/100);
@@ -57,7 +105,15 @@ public class MeritAmericaBankApp {
     	CDOfferings[3] = new CDOffering(5,2.5/100);
     	CDOfferings[4] = new CDOffering(10,2.2/100);
     	
+    	
+    	
     	MeritBank.setCDOfferings(CDOfferings);
     	
     	CDOffering[] fromMeritBankCDOfferings = MeritBank.getCDOfferings();
+    	
+    	for(int i = 0; i < 5; i++) {
+    	System.out.println(fromMeritBankCDOfferings[i].getTerm());
+    	System.out.println(fromMeritBankCDOfferings[i].getInterestRate());
+    	}
+    	
     	*/

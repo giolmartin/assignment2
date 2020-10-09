@@ -16,7 +16,7 @@ public class CDAccount extends BankAccount {
 		this.balance = balance;
 	}
 	
-	
+
 	public double getBalance() {
 		return this.balance;
 	}

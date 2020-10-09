@@ -7,15 +7,13 @@ public class AccountHolder {
 	private String lastName = "";
 	private String ssn = "";
 	private double checkingBalance = 0;
+	private double savingsBalance = 0;
+	
 	private CheckingAccount clientCheckingAccount;
-	private CheckingAccount past;
-	private CheckingAccount actual;
+	
 	private CheckingAccount[] amountCheckingAccounts = new CheckingAccount[1];
 	private SavingsAccount[] amountSavingsAccounts = new SavingsAccount[1];
 	private SavingsAccount clientSavingsAccount;
-	private int checkingAccountAmount = 0;
-	private int savingsAccountAmount = 0;
-	private int cdAccountsAmount = 0;
 	private CDOffering cdOffering = new CDOffering(0,0);
 	private CDAccount cdAccount = new CDAccount(cdOffering,0);
 	private CDAccount[] amountCDAccounts;
@@ -33,8 +31,6 @@ public class AccountHolder {
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.ssn = ssn;
-		this.cdOffering = new CDOffering(0,0);
-		this.cdAccount = new CDAccount(this.cdOffering,0);
 	}
 	
 	
@@ -85,17 +81,15 @@ public class AccountHolder {
 	/** -----------------------------------------------CHECKING ACCOUNT------------------------------------------------------*/
 	public CheckingAccount addCheckingAccount(double openingBalance) {
 		this.clientCheckingAccount = new CheckingAccount(openingBalance);
-		this.clientCheckingAccount.deposit(openingBalance);
-		//System.out.println("add checking simple");
+		addCheckingAccount(this.clientCheckingAccount);
 		return this.clientCheckingAccount;
 	}
 	
 	public CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
-		//System.out.println("add checking array");
 			 if(counterC == this.amountCheckingAccounts.length) {
 			
 			CheckingAccount[] newCheckingAccounts = new CheckingAccount[counterC + 1];
-			
+			System.out.println("create new array");
 			for(int i = 0 ; i < counterC  ; i++) {
 				newCheckingAccounts[i] = this.amountCheckingAccounts[i];
 			} 
@@ -103,43 +97,38 @@ public class AccountHolder {
 		}			
 			this.amountCheckingAccounts[counterC] = checkingAccount;
 			this.counterC++; 
-			//System.out.println(counterC);
-			
+			System.out.println(this.amountCheckingAccounts[counterC - 1].toString());			
 		return null;
 	}
 	
 	public CheckingAccount[] getCheckingAccounts() {
-		
 		return this.amountCheckingAccounts;
 	}
 	
 	public int getNumberOfCheckingAccounts() {
-		return counterC;
+		return this.amountCheckingAccounts.length;
 	}
 	public double getCheckingBalance() {
-		
-		//for (int i = 0; i < this.amountCheckingAccounts.length; i++) {
-		//	checkingBalance = this.amountCheckingAccounts[i].getBalance() 
-	//								+ checkingBalance;
-	//	}
-		return this.clientCheckingAccount.getBalance();
+		double checkingBalance = 0;
+		for (int i = 0; i < this.amountCheckingAccounts.length  ; i++) {
+			checkingBalance = this.amountCheckingAccounts[i].getBalance() 
+									+checkingBalance;
+		}
+		this.checkingBalance = checkingBalance;
+		return this.checkingBalance;
 	}
 	
 	/** -----------------------------------------------SAVINGS ACCOUNT------------------------------------------------------*/
 
 	public SavingsAccount addSavingsAccount(double openingBalance) {
 		this.clientSavingsAccount = new SavingsAccount(openingBalance);
-		
-		//System.out.println("AddSAvingsSimple");
-		return this.clientSavingsAccount;
+		addSavingsAccount(this.clientSavingsAccount);
+			return this.clientSavingsAccount;
 	}
+	
 	public SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
-		//System.out.println("add savings array");
-		
 		if(counterS == this.amountSavingsAccounts.length) {
-			
 			SavingsAccount[] newSavingsAccount = new SavingsAccount[counterS + 1];
-			
 			for(int i = 0; i < counterS ; i++) {
 				newSavingsAccount[i] = this.amountSavingsAccounts[i];
 			}
@@ -147,27 +136,24 @@ public class AccountHolder {
 		}
 		this.amountSavingsAccounts[counterS] = savingsAccount;
 		this.counterS++;
-		//System.out.println(counterS);
 		return null;
 		
 	}
 	public SavingsAccount[] getSavingsAccounts() {
-		for (int i =0 ; i < this .amountSavingsAccounts.length; i++) {
-			
-		}
 		return this.amountSavingsAccounts;
 	}
 	public int getNumberOfSavingsAccounts() {
-		savingsAccountAmount = this.amountSavingsAccounts.length;
-		return savingsAccountAmount;
+		return this.amountSavingsAccounts.length;
 	}
+	
 	public double getSavingsBalance() {
-		//double savingsBalance = 0;
-		//for (int i = 0; i < this.amountSavingsAccounts.length; i++) {
-		//	savingsBalance = this.amountSavingsAccounts[i].getBalance() 
-		//							+ savingsBalance;
-		//}
-		return this.amountSavingsAccounts[counterS].getBalance();
+		double savingsBalance = 0;
+		for (int i = 0; i < this.amountSavingsAccounts.length; i++) {
+			savingsBalance = this.amountSavingsAccounts[i].getBalance() 
+								+ savingsBalance;
+		}
+		this.savingsBalance = savingsBalance;
+		return this.savingsBalance;
 	}
 	
 	/** -----------------------------------------------CD ACCOUNT------------------------------------------------------*/
@@ -186,8 +172,8 @@ public class AccountHolder {
 	}
 	
 	public int getNumberOfCDAccounts() {
-		cdAccountsAmount = this.amountCDAccounts.length;
-		return cdAccountsAmount;
+		
+		return this.amountCDAccounts.length;
 	}
 	
 	public double getCDBalance() {
