@@ -8,7 +8,7 @@ public class MeritBank {
 	private final static double MAXIMUN_BALANCE_AMOUNT = 250000;
 	private static AccountHolder[] accounts = new AccountHolder[0];
 	private static AccountHolder accountH;
-	private static CDOffering[] cdOfferings = new CDOffering[5];
+	private static CDOffering[] cdOfferings;
 	private static CDOffering bestCDOffering;
 	private static CDOffering secondBestCDOffering;
 	private static int counterA = 0;
@@ -44,15 +44,11 @@ public class MeritBank {
 	}
 	
 	public static void clearCDOfferings() {
-		for (int i = 0; i < 5; i++)  {
-			cdOfferings[i] = null;
-		}
+		cdOfferings = null;	
 	}
 	
 	public static void setCDOfferings(CDOffering[] offerings) {
-		for (int i = 0; i< offerings.length; i++) {
-			cdOfferings[i] = offerings[i];
-		}	
+		cdOfferings = offerings;
 	}
 	
 	public static long getNextAccountNumber() {

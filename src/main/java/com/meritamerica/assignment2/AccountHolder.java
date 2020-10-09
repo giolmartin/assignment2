@@ -6,22 +6,27 @@ public class AccountHolder {
 	private String middleName = "";
 	private String lastName = "";
 	private String ssn = "";
+	
 	private double checkingBalance = 0;
 	private double savingsBalance = 0;
 	
 	private CheckingAccount clientCheckingAccount;
-	
 	private CheckingAccount[] amountCheckingAccounts = new CheckingAccount[1];
+	
 	private SavingsAccount[] amountSavingsAccounts = new SavingsAccount[1];
 	private SavingsAccount clientSavingsAccount;
+	
 	private CDOffering cdOffering = new CDOffering(0,0);
+	
 	private CDAccount cdAccount = new CDAccount(cdOffering,0);
 	private CDAccount[] amountCDAccounts;
-	private  int  counterC = 0;
+	
+	private int counterC = 0;
 	private int counterS = 0;
 	
 	private  double tB = 0;
 	MeritBank m = new MeritBank();
+	
 	public AccountHolder(){	
 	}
 	/*
